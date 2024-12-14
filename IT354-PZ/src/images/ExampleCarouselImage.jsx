@@ -1,10 +1,10 @@
-import firstSliderImage from './KSE_0797.jpg';
+
 import '../components/Components.css';
 
-const ExampleCarouselImage = ({ text }) => {
+const ExampleCarouselImage = ({ text,image }) => {
     return (
       <div className='center-flex'>
-        <img src={firstSliderImage} alt={text} style={{ width: '100%' }}  />
+        <img src={image} alt={text} style={{ width: '100%' }}  />
       </div>
     );
   };

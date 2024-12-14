@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import ExampleCarouselImage from '../images/ExampleCarouselImage';
+import firstSliderImage from '../images/KSE_0797.jpg';
+import secondSliderImage from '../images/sliderImage2.jpg';
+import thirdSliderImage from '../images/sliderImage3.jpg';
 import './Components.css'
 
 function ControlledCarousel() {
@@ -13,26 +16,21 @@ function ControlledCarousel() {
   return (
     <Carousel style= {{width: '90%'}} activeIndex={index} onSelect={handleSelect}>
       <Carousel.Item>
-        <ExampleCarouselImage text="First slide" />
+        <ExampleCarouselImage text="First slide" image = {firstSliderImage}/>
         <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3>Expert Repairs You Can Trust</h3>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <ExampleCarouselImage text="Second slide" />
+        <ExampleCarouselImage text="Second slide" image = {secondSliderImage}/>
         <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h3>Your Car, Our Priority</h3>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <ExampleCarouselImage text="Third slide" />
+        <ExampleCarouselImage text="Third slide" image = {thirdSliderImage}/>
         <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+          <h3>Shop Quality Auto Parts Online</h3>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
