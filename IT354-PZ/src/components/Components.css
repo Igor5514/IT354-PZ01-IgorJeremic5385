@@ -1,0 +1,43 @@
+.navbar-container{
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center;  
+}
+
+.custom-navbar {
+    background-color: rgb(37, 35, 35);
+    padding-top: 1em;
+    width: 90%;
+    top: 0;
+}
+
+.custom-navbar .nav-link {
+    padding: 0.5rem 1rem; /* Adjust padding for links */
+    margin-left: 0.5em; /* Remove margin */
+    color: white;
+}
+
+.custom-navbar .nav-link:hover {
+    color: #66ffff;
+}
+
+.center-flex{
+    display: flex;
+    justify-content: center; 
+    align-items: center;  
+    width: 100%;
+}
+
+.slider-container{
+    display: flex;
+    justify-content: center; 
+    align-items: center;  
+    width: 100%;
+}
+
+
+
+
+
+
+
