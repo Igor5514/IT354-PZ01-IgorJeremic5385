@@ -1,22 +1,23 @@
 import React from 'react';
 import './Components.css';
 import Nav from 'react-bootstrap/Nav';
+import {Link} from 'react-router-dom';
 
-export const NavBar = ({setValue}) => {
+export const NavBar = () => {
     return (
-        <div className='navbar-container'>
+        <div className='navbar-container' style={{fontSize:'1.2em'}}>
           <Nav className="custom-navbar"  variant="tabs" defaultActiveKey="/home">
             <Nav.Item>
-              <Nav.Link eventKey="Home.jsx" onClick={() => setValue('home')}>Home</Nav.Link>
+              <Nav.Link as={Link} to={"/"}>Home</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="Services.jsx" onClick={() => setValue('services')}>Services</Nav.Link>
+              <Nav.Link as={Link} to={"/services"}>Services</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="Shop.jsx" onClick={() => setValue('shop')}>Shop</Nav.Link>
+              <Nav.Link as={Link} to={"/shop"}>Shop</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="Contact.jsx" onClick={() => setValue('contact')}>Contact</Nav.Link>
+              <Nav.Link as={Link} to={"/contact"}>Contact</Nav.Link>
             </Nav.Item>
           </Nav>
         </div>

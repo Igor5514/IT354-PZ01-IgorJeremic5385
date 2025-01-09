@@ -35,6 +35,41 @@
     width: 100%;
 }
 
+@media (max-width: 1000px) {
+    .carousel-caption h3 {
+      font-size: 15px;
+    }
+
+    
+}
+
+@media (max-width: 800px) {
+    .carousel-caption{
+      padding: 0px;
+      height: 20%;
+    }
+
+    .carousel-caption h3 {
+        translate: 0px -0.4em;
+        font-size: 0.8em;
+      }
+
+    
+}
+
+@media (max-width: 650px) {
+    .carousel-caption{
+      padding: 0px;
+      height: 20%;
+    }
+
+    .carousel-caption h3 {
+        translate: 0px -0.9em;
+        font-size: 0.7em;
+      }   
+}
+
+
 
 
 
