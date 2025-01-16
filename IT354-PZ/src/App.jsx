@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { NavBar } from './components/NavBar';
 import { Routes, Route } from 'react-router-dom';
-import { Home } from './Home';
-import { Services } from './Services';
-import { Shop } from './Shop';
-import { Contact } from './Contact';
+import { Home } from './pages/Home';
+import { Services } from './pages/Services';
+import { Shop } from './pages/Shop';
+import { Contact } from './pages/Contact';
 import './App.css'
 
 

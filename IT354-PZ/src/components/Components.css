@@ -1,6 +1,19 @@
+@font-face {
+    font-family: 'Dual Sans';
+    src: url('/fonts/DualSans-Regular.woff2') format('woff2'),
+         url('/fonts/DualSans-Regular.woff') format('woff'),
+         url('/fonts/DualSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.custom-font{
+    font-family: 'Dual Sans', sans-serif;
+}
+
 .navbar-container{
     display: flex;
-    justify-content: center; /* Horizontally center */
+    justify-content: center; 
     align-items: center;  
 }
 
@@ -12,8 +25,8 @@
 }
 
 .custom-navbar .nav-link {
-    padding: 0.5rem 1rem; /* Adjust padding for links */
-    margin-left: 0.5em; /* Remove margin */
+    padding: 0.5rem 1rem; 
+    margin-left: 0.5em; 
     color: white;
 }
 
@@ -69,6 +82,9 @@
       }   
 }
 
+.contact-form{
+    width: auto;
+}
 
 
 

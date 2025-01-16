@@ -8,9 +8,9 @@ import thirdImage from '../images/car3.png'
 function GroupCards() {
   return (
     <CardGroup className='mt-5' style={{width: '75%'}}>
-      <Card>
+      <Card style={{marginRight: "1em", borderRadius: "20px", border: "1px solid white"}}>
         <Card.Img variant="top" src={firstImage}  />
-        <Card.Body className='text-white'>
+        <Card.Body className='text-white' >
           <Card.Title>Expert Engine Repair</Card.Title>
           <Card.Text>
             Your vehicle’s engine is its heart, and we specialize in keeping it in top condition. From diagnostics 
@@ -18,8 +18,8 @@ function GroupCards() {
             longevity. Drive with confidence, knowing your engine is in expert hands.
           </Card.Text>
         </Card.Body>
-      </Card>
-      <Card>
+      </Card >
+      <Card style={{marginRight: "1em", borderRadius: "20px", border: "1px solid white"}}>
         <Card.Img variant="top" src={secondImage} />
         <Card.Body className='text-white'>
           <Card.Title>Precision Brake Services</Card.Title>
@@ -30,7 +30,7 @@ function GroupCards() {
           </Card.Text>
         </Card.Body>
       </Card>
-      <Card>
+      <Card style={{borderRadius: "20px", border: "1px solid white"}}>
         <Card.Img variant="top" src={thirdImage} />
         <Card.Body className='text-white'>
           <Card.Title>Comprehensive Transmission Care</Card.Title>
