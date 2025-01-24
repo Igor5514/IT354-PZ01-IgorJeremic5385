@@ -29,7 +29,6 @@ const ContactForm = () => {
                     <input type="text" id="firstName" name="firstName" style={{backgroundColor: "black"}} className="form-control bg-secondary text-light border-0"
                     value={formData.firstName} onChange={handleChange} required />
                 </div>
-                <div></div>
                 
                 <div className='mb-3 component-bg'>
                     <label htmlFor="lastName" className='mb-1 component-bg' style={{fontSize: "1.2em",padding:"0.2em 1em"}}>Last Name:</label><br />

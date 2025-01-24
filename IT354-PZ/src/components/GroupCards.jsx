@@ -18,7 +18,7 @@ function GroupCards() {
             longevity. Drive with confidence, knowing your engine is in expert hands.
           </Card.Text>
         </Card.Body>
-      </Card >
+      </Card>
       <Card style={{marginRight: "1em", borderRadius: "20px", border: "1px solid white"}}>
         <Card.Img variant="top" src={secondImage} />
         <Card.Body className='text-white'>
