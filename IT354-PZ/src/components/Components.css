@@ -90,6 +90,10 @@
     margin-top: 7em;
 }
 
+.main-register-container{
+    margin-top: 3em;
+}
+
 .card-button:hover{
     background-color: #404040;
 }

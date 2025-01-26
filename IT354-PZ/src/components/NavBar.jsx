@@ -3,13 +3,12 @@ import './Components.css';
 import Nav from 'react-bootstrap/Nav';
 import {NavLink} from 'react-router-dom';
 
-export const NavBar = ({ setVisibility, isLoginVisible }) => {
+export const NavBar = ({ setLoginVisibility }) => {
 
   function handleClick(event){
     event.preventDefault();
-    if(!isLoginVisible){
-      setVisibility(true);
-    }
+    setLoginVisibility(true);
+
   }
 
   return (

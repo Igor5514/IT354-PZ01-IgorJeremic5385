@@ -17,15 +17,19 @@ function App() {
   const [isLoginVisible, setIsLoginVisible] = useState(false);
   const [isRegistrationVisible, setIsRegistrationVisible] = useState(false);
 
-  function setVisibility(visibility){
+  function setLoginVisibility(visibility){
     setIsLoginVisible(visibility)
+  }
+
+  function setRegistrationVisibility(visibility){
+    setIsRegistrationVisible(visibility)
   }
 
   return (
     <>
     { !(isLoginVisible || isRegistrationVisible) &&
       <div className='d-flex flex-column '>
-        <NavBar setVisibility={setVisibility} isLoginVisible={isLoginVisible}/>
+        <NavBar setLoginVisibility={setLoginVisibility}/>
         <Routes className='main-container mt-1'>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
@@ -36,12 +40,12 @@ function App() {
     }  
     { isLoginVisible &&
       <div className='main-login-container'>
-        <Login />
+        <Login setLoginVisibility={setLoginVisibility} setRegistrationVisibility={setIsRegistrationVisible}/>
       </div>
     }
     { isRegistrationVisible &&
-      <div className='main-registration-container'>
-        <Registration />
+      <div className='main-register-container'>
+        <Registration setLoginVisibility={setLoginVisibility} setRegistrationVisibility={setRegistrationVisibility}/>
       </div>
     }
     </>

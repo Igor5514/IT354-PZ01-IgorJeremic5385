@@ -1,6 +1,21 @@
 import "./Components.css"
 
-const Login = () => {
+const Login = ({setLoginVisibility, setRegistrationVisibility}) => {
+    function handleLoginClick(event) {
+        
+    }
+
+    function handleRegisterClick(event) {
+        event.preventDefault();
+        setLoginVisibility(false);
+        setRegistrationVisibility(true);
+    }
+
+    function handleGuestClick(){
+        setLoginVisibility(false);
+        setRegistrationVisibility(false);
+    }
+
     return (
         <div className="d-flex justify-content-center custom-font" style={{ fontFamily: "'DM Sans', sans-serif" }}>
             <div className="login-container">
@@ -19,10 +34,10 @@ const Login = () => {
                 </div>
                 <div className="d-flex justify-content-center" style={{backgroundColor: " #1a1a1a"}}>
                     <div className="login-buttons text-white"> 
-                        <button className="button-class-login">login</button>
+                        <button className="button-class-login" onClick={(event) => handleLoginClick(event)}>login</button>
                         <label htmlFor="firstName" className='component-bg'>don't have an account?</label>
-                        <button className="button-class-login">register</button>
-                        <button className="button-class-login">continue as guest</button>
+                        <button className="button-class-login" onClick={(event) => handleRegisterClick(event)}>register</button>
+                        <button className="button-class-login" onClick={(event) => handleGuestClick(event)}>continue as guest</button>
                     </div>
                 </div>
             </div>
