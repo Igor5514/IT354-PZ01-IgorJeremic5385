@@ -1,4 +1,5 @@
-import "./Components.css"
+import "./Components.css";
+import RegisterDropdown from "./RegisterDropdown";
 
 const Registration = ({setLoginVisibility,setRegistrationVisibility}) => {
     function handleLoginClick(event) {
@@ -35,7 +36,13 @@ const Registration = ({setLoginVisibility,setRegistrationVisibility}) => {
                 </div>
                 <div className='mb-3 component-bg' style={{padding:"0 2em 0 2em"}}>
                     <label htmlFor="password" className='mb-1 component-bg' style={{fontSize: "1.2em", padding:"0.2em 1em"}}>user password:</label><br />
-                    <input type="text" id="password" name="password" style={{backgroundColor: "black"}} 
+                    <input type="password" id="password" name="password" style={{backgroundColor: "black"}} 
+                    className="form-control bg-secondary text-light border-0" required />
+                    <p id="password-error-label"></p>
+                </div>
+                <div className='mb-3 component-bg' style={{padding:"0 2em 0 2em"}}>
+                    <label htmlFor="repeatPassword" className='mb-1 component-bg' style={{fontSize: "1.2em", padding:"0.2em 1em"}}>repeat password:</label><br />
+                    <input type="password" id="repeatPassword" name="repeatPassword" style={{backgroundColor: "black"}} 
                     className="form-control bg-secondary text-light border-0" required />
                     <p id="password-error-label"></p>
                 </div>
@@ -44,6 +51,9 @@ const Registration = ({setLoginVisibility,setRegistrationVisibility}) => {
                     <input type="text" id="phoneNumber" name="phoneNumber" style={{backgroundColor: "black"}} 
                     className="form-control bg-secondary text-light border-0" required />
                     <p id="password-error-label"></p>
+                </div>
+                <div className='mb-3 component-bg' style={{padding:"0 2em 0 2em"}} >          
+                    <RegisterDropdown className='component-bg' />
                 </div>
                 <div className="d-flex justify-content-center" style={{backgroundColor: " #1a1a1a"}}>
                     <div className="login-buttons text-white"> 

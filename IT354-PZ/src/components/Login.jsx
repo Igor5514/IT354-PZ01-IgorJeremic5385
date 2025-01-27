@@ -27,8 +27,8 @@ const Login = ({setLoginVisibility, setRegistrationVisibility}) => {
                     <p id="email-error-label"></p>
                 </div>
                 <div className='mb-3 component-bg' style={{padding:"0 2em 0 2em"}}>
-                    <label htmlFor="firstName" className='mb-1 component-bg' style={{fontSize: "1.2em", padding:"0.2em 1em"}}>user password:</label><br />
-                    <input type="text" id="firstName" name="firstName" style={{backgroundColor: "black"}} 
+                    <label htmlFor="password" className='mb-1 component-bg' style={{fontSize: "1.2em", padding:"0.2em 1em"}}>user password:</label><br />
+                    <input type="password" id="password" name="password" style={{backgroundColor: "black"}} 
                     className="form-control bg-secondary text-light border-0" required />
                     <p id="password-error-label"></p>
                 </div>
