@@ -23,31 +23,31 @@ const Registration = ({setLoginVisibility,setRegistrationVisibility}) => {
             <div className="login-container">
                 <h2 className="text-center pt-3" style={{backgroundColor: " #1a1a1a"}}>Registration</h2>
                 <div className='mb-3 component-bg' style={{padding:"0 2em 0 2em"}}>
-                    <label htmlFor="fullName" className='mb-1 component-bg' style={{fontSize: "1.2em", padding:"0.2em 1em"}}>full name:</label><br />
+                    <label htmlFor="fullName" className='mb-1 component-bg' style={{fontSize: "1.1em", padding:"0.1em 1em"}}>full name:</label><br />
                     <input type="text" id="fullName" name="fullName" style={{backgroundColor: "black"}} 
                     className="form-control bg-secondary text-light border-0" required />
                     <p id="email-error-label"></p>
                 </div>
                 <div className='mb-3 component-bg' style={{padding:"0 2em 0 2em"}}>
-                    <label htmlFor="email" className='mb-1 component-bg' style={{fontSize: "1.2em", padding:"0.2em 1em"}}>user email:</label><br />
+                    <label htmlFor="email" className='mb-1 component-bg' style={{fontSize: "1.1em", padding:"0.1em 1em"}}>user email:</label><br />
                     <input type="text" id="email" name="email" style={{backgroundColor: "black"}} 
                     className="form-control bg-secondary text-light border-0" required />
                     <p id="email-error-label"></p>
                 </div>
                 <div className='mb-3 component-bg' style={{padding:"0 2em 0 2em"}}>
-                    <label htmlFor="password" className='mb-1 component-bg' style={{fontSize: "1.2em", padding:"0.2em 1em"}}>user password:</label><br />
+                    <label htmlFor="password" className='mb-1 component-bg' style={{fontSize: "1.2em", padding:"0.1em 1em"}}>user password:</label><br />
                     <input type="password" id="password" name="password" style={{backgroundColor: "black"}} 
                     className="form-control bg-secondary text-light border-0" required />
                     <p id="password-error-label"></p>
                 </div>
                 <div className='mb-3 component-bg' style={{padding:"0 2em 0 2em"}}>
-                    <label htmlFor="repeatPassword" className='mb-1 component-bg' style={{fontSize: "1.2em", padding:"0.2em 1em"}}>repeat password:</label><br />
+                    <label htmlFor="repeatPassword" className='mb-1 component-bg' style={{fontSize: "1.2em", padding:"0.1em 1em"}}>repeat password:</label><br />
                     <input type="password" id="repeatPassword" name="repeatPassword" style={{backgroundColor: "black"}} 
                     className="form-control bg-secondary text-light border-0" required />
                     <p id="password-error-label"></p>
                 </div>
                 <div className='mb-3 component-bg' style={{padding:"0 2em 0 2em"}}>
-                    <label htmlFor="phoneNumber" className='mb-1 component-bg' style={{fontSize: "1.2em", padding:"0.2em 1em"}}>phone number:</label><br />
+                    <label htmlFor="phoneNumber" className='mb-1 component-bg' style={{fontSize: "1.1em", padding:"0.1em 1em"}}>phone number:</label><br />
                     <input type="text" id="phoneNumber" name="phoneNumber" style={{backgroundColor: "black"}} 
                     className="form-control bg-secondary text-light border-0" required />
                     <p id="password-error-label"></p>

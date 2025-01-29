@@ -1,6 +1,8 @@
 import "./Components.css"
 
 const Login = ({setLoginVisibility, setRegistrationVisibility}) => {
+
+    
     function handleLoginClick(event) {
         
     }
