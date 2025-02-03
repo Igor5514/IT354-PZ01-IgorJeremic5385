@@ -61,7 +61,7 @@ const Registration = ({ setLoginVisibility, setRegistrationVisibility }) => {
         setFormData({ ...formData, [event.target.name]: event.target.value });
     }
 
-    function handleRegisterClick(event) {
+    async function handleRegisterClick(event) {
         event.preventDefault();
 
         const newErrors = {
@@ -75,7 +75,13 @@ const Registration = ({ setLoginVisibility, setRegistrationVisibility }) => {
         setErrors(newErrors);
 
         if (Object.values(newErrors).every((error) => error === "")) {
-            console.log("Registration successful", formData);
+             const response = await fetch("http://localhost:8080/users/add", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            })
         }
     }
 
