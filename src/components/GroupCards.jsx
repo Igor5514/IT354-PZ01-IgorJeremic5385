@@ -1,9 +1,9 @@
 import Card from 'react-bootstrap/Card';
 import React from 'react';
 import CardGroup from 'react-bootstrap/CardGroup';
-import firstImage from '../images/car1.png'
-import secondImage from '../images/car2.png'
-import thirdImage from '../images/car3.png'
+import firstImage from '../images/car1.jpg'
+import secondImage from '../images/car2.jpg'
+import thirdImage from '../images/car3.jpg'
 
 function GroupCards() {
   return (

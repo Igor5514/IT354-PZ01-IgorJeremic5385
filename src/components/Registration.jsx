@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Components.css";
 import RegisterDropdown from "./RegisterDropdown";
 
 const Registration = ({ setLoginVisibility, setRegistrationVisibility }) => {
+
     const [formData, setFormData] = useState({
         fullName: "",
         email: "",
@@ -12,7 +13,21 @@ const Registration = ({ setLoginVisibility, setRegistrationVisibility }) => {
         role:"user",
     });
 
+    const address = "http://localhost:8080/users";
+
     const [errors, setErrors] = useState({});
+
+    async function checkIfExists(email){
+        const response = await fetch(`${address}/getResByEmail`,{
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({email: email}),
+        });
+        const exist = await response.json()
+        return exist;
+    }
 
     function validateFullName() {
         if (!formData.fullName.trim()) {
@@ -24,7 +39,7 @@ const Registration = ({ setLoginVisibility, setRegistrationVisibility }) => {
         return "";
     }
 
-    function validateEmail() {
+    async function validateEmail() {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!formData.email.trim()) {
             return "Email is required.";
@@ -32,8 +47,13 @@ const Registration = ({ setLoginVisibility, setRegistrationVisibility }) => {
         if (!emailRegex.test(formData.email)) {
             return "Invalid email format.";
         }
+        let emailExist = await checkIfExists(formData.email)
+        if(emailExist) {
+            return "Email already exists.";
+        }
         return "";
     }
+    
 
     function validatePassword() {
         if (formData.password.length < 6) {
@@ -63,26 +83,36 @@ const Registration = ({ setLoginVisibility, setRegistrationVisibility }) => {
 
     async function handleRegisterClick(event) {
         event.preventDefault();
-
+    
         const newErrors = {
             fullName: validateFullName(),
-            email: validateEmail(),
+            email: await validateEmail(),
             password: validatePassword(),
             repeatPassword: validateRepeatPassword(),
             phoneNumber: validatePhoneNumber(),
         };
-
         setErrors(newErrors);
-
-        if (Object.values(newErrors).every((error) => error === "")) {
-             const response = await fetch("http://localhost:8080/users/add", {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(formData),
-            })
+        try {
+            if (Object.values(newErrors).every((error) => error === "")) {
+                const response = await fetch(`${address}/add`, {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json' 
+                    },
+                    body: JSON.stringify(formData),
+                })
+                const data = await response.json();
+                if(response.ok) {
+                    console.log("Success: "+ data.message);
+                }else{
+                    console.error("Error: "+ data.message);
+                }
+            }
+            
+        }catch (e) {
+            console.error(e.message);
         }
+       
     }
 
     function handleLoginClick(event) {
