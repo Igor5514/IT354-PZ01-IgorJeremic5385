@@ -104,7 +104,7 @@ const Registration = ({ setLoginVisibility, setRegistrationVisibility }) => {
                 const data = await response.json();
                 if(response.ok) {
                     console.log("Success: "+ data.message);
-                    setLoginVisibility(false);
+                    setLoginVisibility(true);
                     setRegistrationVisibility(false);
                 }else{
                     console.error("Error: "+ data.message);

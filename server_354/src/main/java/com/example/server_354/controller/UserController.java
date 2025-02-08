@@ -38,6 +38,8 @@ public class UserController {
         }
     }
 
+
+
     @PostMapping("/getByEmail")
     public Optional<User> getUserByEmail(@RequestBody String email){
         return userService.getUserByEmail(email);

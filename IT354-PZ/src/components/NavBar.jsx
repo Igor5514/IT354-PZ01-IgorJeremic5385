@@ -4,13 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import {NavLink} from 'react-router-dom';
 import Dropdown from './Dropdown' 
 
-export const NavBar = ({ setLoginVisibility }) => {
-
-  function handleClick(event){
-    event.preventDefault();
-    setLoginVisibility(true);
-
-  }
+export const NavBar = ({ setLoginVisibility, setRegistrationVisibility }) => {
 
   return (
       <div className='navbar-container' style={{fontSize:'1.2em', fontFamily: "'DM Sans', sans-serif"}}>
@@ -28,7 +22,7 @@ export const NavBar = ({ setLoginVisibility }) => {
             <Nav.Link as={NavLink} to={"/contact"}>Contact</Nav.Link>
           </Nav.Item>
           <div style={{margin: "0 1em 0 auto"}} className='account-dropdown'>
-            <Dropdown />
+            <Dropdown setLoginVisibility={setLoginVisibility} setRegistrationVisibility={setRegistrationVisibility}/>
           </div>
         </Nav>
        

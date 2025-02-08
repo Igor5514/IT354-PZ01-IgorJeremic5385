@@ -3,8 +3,6 @@ import { useState } from "react";
 
 const Login = ({setLoginVisibility, setRegistrationVisibility}) => {
 
-    let em = "asdf@gmail.com"
-    let pass = "aa!!11DD"
     const [formData, setFormData] = useState({
         email: "",
         password: ""
@@ -34,7 +32,7 @@ const Login = ({setLoginVisibility, setRegistrationVisibility}) => {
     }
 
 
-    function handleLoginClick(event) {
+    async function handleLoginClick(event) {
         event.preventDefault();
 
         const newErrors = {
@@ -45,7 +43,19 @@ const Login = ({setLoginVisibility, setRegistrationVisibility}) => {
         setErrors(newErrors);
 
         if (Object.values(newErrors).every((error) => error === "")) {
-            console.log("Login successful", formData);
+            const response = await fetch("http://localhost:8080/users/getByEmail", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            })
+            const data = await response.json();
+            if(data.ok){
+
+            }else{
+                
+            }
         }
 
     }
