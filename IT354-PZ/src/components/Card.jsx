@@ -1,5 +1,7 @@
 import image1 from "../images/card-car1.jpg";
 import image2 from "../images/card-car2.jpg";
+import image3 from "../images/card-car3.jpg";
+
 import "../fonts/fonts.css";
 
 const Card = () => {
@@ -25,6 +27,19 @@ const Card = () => {
                         <button className="text-white border ms-4 card-button" style={{padding:"0.5em 1em"}}>make an appointment</button>
                 </div>
                 <img src = {image1} className="w-50 border"/>
+            </div>
+
+            <div className="container-fluid d-flex justify-content-center" style={{marginTop: "7em", width:"76%", fontFamily: "tahoma"}}>
+                <img src = {image3} className="w-50 border"/>
+                <div style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                    <h3 className="p-4 border-bottom" style={{marginLeft: "10px"}}>Performance tuning</h3>
+                    <p className="p-4">We offer professional performance tuning services to optimize your vehicle’s power,
+                         efficiency, and responsiveness. Our expert tuning enhances engine performance, fuel economy, and 
+                         overall driving experience. Whether you seek increased horsepower or to snap engine block in half,
+                          we tailor our solutions to meet your needs. Unlock your car’s full potential with our precision 
+                          tuning.</p>
+                    <button className="text-white border ms-4 card-button" style={{padding:"0.5em 1em"}}>make an appointment</button>
+                </div>
             </div>
         </div>
     );
