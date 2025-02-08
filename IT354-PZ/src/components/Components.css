@@ -35,7 +35,7 @@
 }
 
 .custom-navbar .nav-link:hover {
-    color: #66ffff;
+    color: #999999;
 }
 
 .center-flex{
@@ -68,6 +68,10 @@
     padding: 1em;
     border: 1px solid white;
     background-color: #1a1a1a;
+}
+
+.account-dropdown{
+    border: none !important;
 }
 
 .login-container{

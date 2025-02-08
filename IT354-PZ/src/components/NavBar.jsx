@@ -2,6 +2,7 @@ import React from 'react';
 import './Components.css';
 import Nav from 'react-bootstrap/Nav';
 import {NavLink} from 'react-router-dom';
+import Dropdown from './Dropdown' 
 
 export const NavBar = ({ setLoginVisibility }) => {
 
@@ -26,9 +27,11 @@ export const NavBar = ({ setLoginVisibility }) => {
           <Nav.Item>
             <Nav.Link as={NavLink} to={"/contact"}>Contact</Nav.Link>
           </Nav.Item>
-          <button className='login-button' onClick={(event) => handleClick(event)} style={{borderRadius: "5px"}}>login</button>
+          <div style={{margin: "0 1em 0 auto"}} className='account-dropdown'>
+            <Dropdown />
+          </div>
         </Nav>
-        
+       
       </div>
   );
 
