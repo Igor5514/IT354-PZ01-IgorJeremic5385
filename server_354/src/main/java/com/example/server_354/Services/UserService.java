@@ -2,7 +2,6 @@ package com.example.server_354.Services;
 
 import com.example.server_354.object.User;
 import jakarta.transaction.Transactional;
-import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

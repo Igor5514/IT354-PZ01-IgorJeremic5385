@@ -52,7 +52,7 @@ const Login = ({setLoginVisibility, setRegistrationVisibility}) => {
             })
             const data = await response.json();
             if(data.ok){
-
+                
             }else{
                 
             }

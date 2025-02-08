@@ -7,10 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping("/users")
@@ -41,8 +38,23 @@ public class UserController {
 
 
     @PostMapping("/getByEmail")
-    public Optional<User> getUserByEmail(@RequestBody String email){
-        return userService.getUserByEmail(email);
+    public ResponseEntity<?> getUserByEmail(@RequestBody String email, String password){
+        try{
+            Optional<User> user = userService.getUserByEmail(email);
+            if(user.isPresent()){
+                if(Objects.equals(password, user.get().getPassword())){
+                    return ResponseEntity.ok(user.get());
+                }else {
+                    Map<String,String> message = new HashMap<>();
+                    message.put("message", "passwords do not match failed to login");
+                    return ResponseEntity.ok(message);
+                }
+            }else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+            }
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error: "+e.getMessage());
+        }
     }
 
     @PostMapping("/getResByEmail")
