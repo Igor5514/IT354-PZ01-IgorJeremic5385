@@ -1,7 +1,9 @@
+import { UserContext } from "../context/UserProvider";
 import "./Components.css"
-import { useState } from "react";
+import React, { useState,useContext } from "react";
 
 const Login = ({setLoginVisibility, setRegistrationVisibility}) => {
+    const {setUser} = useContext(UserContext);
 
     const [formData, setFormData] = useState({
         email: "",
@@ -51,10 +53,22 @@ const Login = ({setLoginVisibility, setRegistrationVisibility}) => {
                 body: JSON.stringify(formData)
             })
             const data = await response.json();
-            if(data.ok){
-                
+            if(response.ok){
+                setUser({
+                    fullName: data.fullName,
+                    email: data.email,
+                    phoneNumber: data.phoneNumber,
+                    isLoggedIn: true
+                });
+                setLoginVisibility(false);
+                setRegistrationVisibility(false);
             }else{
-                
+                console.error("Error", data.message);
+
+                setErrors((prevErrors) => ({
+                    ...prevErrors,
+                    password: data.message
+                }));
             }
         }
 

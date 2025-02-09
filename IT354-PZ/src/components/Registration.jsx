@@ -107,7 +107,7 @@ const Registration = ({ setLoginVisibility, setRegistrationVisibility }) => {
                     setLoginVisibility(true);
                     setRegistrationVisibility(false);
                 }else{
-                    console.error("Error: "+ data.message);
+                    console.error(data.message);
                 }
             }
             

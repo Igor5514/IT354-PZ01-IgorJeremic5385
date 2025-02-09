@@ -1,6 +1,7 @@
 package com.example.server_354.controller;
 
 import com.example.server_354.Services.UserService;
+import com.example.server_354.object.LoginRequest;
 import com.example.server_354.object.User;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
@@ -38,22 +39,24 @@ public class UserController {
 
 
     @PostMapping("/getByEmail")
-    public ResponseEntity<?> getUserByEmail(@RequestBody String email, String password){
+    public ResponseEntity<?> getUserByEmail(@RequestBody LoginRequest loginRequest){
+        Map<String,String> message = new HashMap<>();
         try{
-            Optional<User> user = userService.getUserByEmail(email);
+            Optional<User> user = userService.getUserByEmail(loginRequest.getEmail());
             if(user.isPresent()){
-                if(Objects.equals(password, user.get().getPassword())){
+                if(Objects.equals(loginRequest.getPassword(), user.get().getPassword())){
                     return ResponseEntity.ok(user.get());
                 }else {
-                    Map<String,String> message = new HashMap<>();
                     message.put("message", "passwords do not match failed to login");
-                    return ResponseEntity.ok(message);
+                    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(message);
                 }
             }else {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+                message.put("message", "User not found");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
             }
         }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error: "+e.getMessage());
+            message.put("message", "Error: "+e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(message);
         }
     }
 
@@ -69,6 +72,9 @@ public class UserController {
                                              @RequestBody String password,
                                              @RequestBody String phoneNumber,
                                              @RequestBody String role){
+        if(!role.equals("user")){
+            role = "user";
+        }
         if(userService.updateUser(fullName, email, password, phoneNumber, role)){
             return ResponseEntity.ok("user updated successfully");
         }else{
