@@ -1,0 +1,136 @@
+.main-card-container{
+    width: 24em;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    padding: 1.4em;
+    align-items: flex-start;
+    border: 1px solid white;
+}
+
+.main-card-container h2{
+    margin: 0.2em 0 0.3em 0.2em;
+    text-align: left;
+    background-color: #1a1a1a;
+}
+
+.main-card-container img{
+    width: 60%;
+    height: auto;
+    padding: 0.5em;
+    background-color: #1a1a1a;
+}
+
+.sub-main-container{
+    background-color: #1a1a1a;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Sans', sans-serif;
+    border-bottom: 1px solid white;
+    width: 100%;
+    padding: 0 0 1em 0;
+}
+
+.main-paragraph-cotnainer{
+    width: 50%;
+    flex-grow: 1;
+    background-color: #1a1a1a;
+    padding: 0.2em;
+}
+
+.main-paragraph-cotnainer p{
+    background-color: #1a1a1a;
+    margin: 0;
+    padding: 0.2em;
+}
+
+.main-card-container button{
+    background-color: #1a1a1a;
+    padding: 0.5em 2em;
+    color: white;
+    border: 1px solid white;
+    font-family: 'DM Sans', sans-serif;
+    border-radius: 5px;
+    text-align: right;
+    margin: 1em 0.5em 0.2em auto;
+}
+
+.list-holder{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 1000; 
+    width: 100%;
+    flex: 1;
+    background-color: black;
+
+}
+
+.list-holder ul {
+    background-color: black;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.list-holder ul li{
+    background-color: black;
+    margin: 0px;
+    padding: 0.5em 0.5em;
+}
+
+.list-holder ul li:hover{
+    background-color: #262626;
+    
+}
+
+.list-holder input{
+    border: 1px solid white;
+    font-size: 1.1em;
+}
+
+
+.main-car-selection-container{
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    width: 26em;
+    background-color: #1a1a1a;
+    font-family: 'DM Sans', sans-serif;
+    border: 1px solid white;
+
+}
+
+.dropdowns-container{
+    background-color: #1a1a1a;
+
+}
+
+.none-display{
+    display: none;
+}
+
+.dropdown-vehicle-container{
+    margin-bottom: 1.5em;
+    position: relative;
+}
+
+.car-dropdown-display{
+    display: flex;
+    flex: 1;
+    width: 100%;
+}
+
+
+.dropdown-selection-button{
+    width: 100%;
+    font-size: 1.1em;
+    padding: 0.3em 0 0.3em 0;
+}
+

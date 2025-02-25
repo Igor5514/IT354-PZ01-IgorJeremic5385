@@ -36,8 +36,6 @@ public class UserController {
         }
     }
 
-
-
     @PostMapping("/getByEmail")
     public ResponseEntity<?> getUserByEmail(@RequestBody LoginRequest loginRequest){
         Map<String,String> message = new HashMap<>();
@@ -62,7 +60,6 @@ public class UserController {
 
     @PostMapping("/getResByEmail")
     public boolean getResponseByEmail(@RequestBody Map<String,String> emailMap){
-        System.out.println(userService.getResponseByEmail(emailMap.get("email")));
         return userService.getResponseByEmail(emailMap.get("email"));
     }
 
