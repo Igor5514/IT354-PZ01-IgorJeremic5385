@@ -69,6 +69,7 @@
     width: 100%;
     flex: 1;
     background-color: black;
+    border: 1px solid white;
 
 }
 
@@ -83,6 +84,7 @@
     background-color: black;
     margin: 0px;
     padding: 0.5em 0.5em;
+    color: white;
 }
 
 .list-holder ul li:hover{
