@@ -10,10 +10,14 @@ public class VehicleService {
 
     private final MakeRepository makeRepository;
     private final ModelRepository modelRepository;
+    private final GenerationRepository generationRepository;
+    private final EngineRepository engineRepository;
 
-    public VehicleService(MakeRepository makeRepository, ModelRepository modelRepository) {
+    public VehicleService(MakeRepository makeRepository, ModelRepository modelRepository, GenerationRepository generationRepository, EngineRepository engineRepository) {
         this.makeRepository = makeRepository;
         this.modelRepository = modelRepository;
+        this.generationRepository = generationRepository;
+        this.engineRepository = engineRepository;
     }
 
 
@@ -21,8 +25,20 @@ public class VehicleService {
         return makeRepository.getAllMakes();
     }
 
+    public List<String> getModelByMakeId(int makeId){
+        return modelRepository.getModelByMakeId(makeId);
+    }
 
+    public Integer getMakeIdByMake(String make){
+        return makeRepository.getMakeIdByMake(make);
+    }
 
+    public List<String> getGenerationByModelId(String model){
+        return generationRepository.getGenerationByModelId(model);
+    }
 
+    public List<String> getEngineByModelAndGeneration(String model, String generation){
+        return engineRepository.getEngineByModelAndGeneration(model, generation);
+    }
 
 }

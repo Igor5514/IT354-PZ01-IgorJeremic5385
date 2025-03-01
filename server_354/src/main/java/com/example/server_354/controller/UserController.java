@@ -28,9 +28,11 @@ public class UserController {
             response.put("message", "User created successfully");
             return ResponseEntity.ok(response);
         }catch (DataAccessException e){
+            System.out.println(e.getMessage());
             response.put("message", "Server error: "+e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }catch (Exception e){
+            System.out.println(e.getMessage());
             response.put("message", "Error: "+e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
@@ -53,6 +55,7 @@ public class UserController {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
             }
         }catch (Exception e){
+            System.out.println(e.getMessage());
             message.put("message", "Error: "+e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(message);
         }
