@@ -105,9 +105,8 @@
     flex-direction: column;
     width: 26em;
     background-color: #1a1a1a;
-    font-family: 'DM Sans', sans-serif;
     border: 1px solid white;
-
+    border-radius: 10px;
 }
 
 .dropdowns-container{
