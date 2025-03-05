@@ -1,17 +1,17 @@
 package com.example.server_354.controller;
 
 import com.example.server_354.Services.VehicleService;
-import com.example.server_354.object.EngineModel;
-import com.example.server_354.object.Make;
-import com.example.server_354.object.Model;
+import com.example.server_354.object.*;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.*;
 
 @RestController
 @RequestMapping("/vehicle")
@@ -60,7 +60,7 @@ public class VehicleController {
             return ResponseEntity.ok(generationList);
         }catch (DataAccessException e){
             System.out.println(e.getMessage());
-            errorResponse.put("message", "couldn't retrieve generation"+ e.getMessage());
+            errorResponse.put("error", "couldn't retrieve generation"+ e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
         }
     }
@@ -72,7 +72,6 @@ public class VehicleController {
         Map<String, String> errorResponse = new HashMap<>();
         try{
             List<String> engineList = vehicleService.getEngineByModelAndGeneration(substringModel, substringGeneration);
-            System.out.println(engineList);
             return ResponseEntity.ok(engineList);
         }catch (DataAccessException e){
             System.out.println(e.getMessage());
@@ -80,4 +79,31 @@ public class VehicleController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
         }
     }
+
+    @GetMapping("/getPartGroup")
+    private ResponseEntity<?> getPartGroup(){
+        Map<String,String> response = new HashMap<>();
+        try{
+            List<PartGroup> list = new ArrayList<>();
+            List<CarPartGroup> groupList= vehicleService.getPartsGroup();
+            for(CarPartGroup pg : groupList){
+                String base64Image = Base64.getEncoder().encodeToString(pg.getImage());
+                String groupName = pg.getGroup_name();
+                List<String> partsList = vehicleService.getFourCarPartsByGroupId(pg.getGroup_id());
+                list.add( new PartGroup(groupName,base64Image, partsList));
+            }
+            return ResponseEntity.ok(list);
+        }catch (DataAccessException e){
+            System.out.println("message: "+e.getMessage());
+            response.put("message", "error: "+e.getMessage());
+             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
+
+    public static byte[] convertImageToBytes(BufferedImage image) throws IOException {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        ImageIO.write(image, "png", byteArrayOutputStream);
+        return byteArrayOutputStream.toByteArray();
+    }
+
 }
