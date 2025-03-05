@@ -7,10 +7,10 @@
 }
 
 .part-carts-grid-container > * {
-    height: 100%; /* Ensures that each item takes up full grid height */
+    height: 100%; 
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Adjusts content to fill the height */
+    justify-content: space-between; 
 }
 
 .main-shop-container{
