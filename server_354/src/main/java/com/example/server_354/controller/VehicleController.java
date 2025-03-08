@@ -6,11 +6,6 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.*;
 
 @RestController
@@ -100,10 +95,27 @@ public class VehicleController {
         }
     }
 
-    public static byte[] convertImageToBytes(BufferedImage image) throws IOException {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        ImageIO.write(image, "png", byteArrayOutputStream);
-        return byteArrayOutputStream.toByteArray();
+
+    @PostMapping("/getPartsList")
+    private ResponseEntity<?> getPartsList(@RequestBody String partGroup){
+        Map<String,String> response = new HashMap<>();
+        try{
+            int groupId = vehicleService.getGroupIdByGroupName(partGroup);
+            List<Part> list = new ArrayList<>();
+            List<CarPartType> partsList = vehicleService.getPartsTypeByGroupId(groupId);
+            for(CarPartType pg : partsList){
+                String base64Image = Base64.getEncoder().encodeToString(pg.getImage());
+                String partTypeName = pg.getPart_type();
+                list.add(new Part(partTypeName,base64Image));
+            }
+            return ResponseEntity.ok(list);
+        }catch (DataAccessException e){
+            System.out.println("message: "+e.getMessage());
+            response.put("message", "error: "+e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
     }
+
+
 
 }

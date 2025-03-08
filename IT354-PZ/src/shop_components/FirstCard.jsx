@@ -2,6 +2,11 @@ import React from "react";
 import "./ShopComponents.css";
 
 const FirstCard = ({title, paragraphs, img}) => {
+
+    function buttonListener(e) {
+        e.preventDefault();
+    }
+
     return(
         <div>
             <div className="main-card-container">
@@ -16,7 +21,7 @@ const FirstCard = ({title, paragraphs, img}) => {
                     </div>
                     <img src= {img} />
                 </div>
-                <button>Show more</button>
+                <button onClick={(e) => {buttonListener(e)}}>Show more</button>
             </div>
         </div>  
     );

@@ -1,6 +1,7 @@
 package com.example.server_354.Services;
 
 import com.example.server_354.object.CarPartGroup;
+import com.example.server_354.object.CarPartType;
 import com.example.server_354.object.Make;
 import org.springframework.stereotype.Service;
 
@@ -14,13 +15,15 @@ public class VehicleService {
     private final GenerationRepository generationRepository;
     private final EngineRepository engineRepository;
     private final PartGroupRepository partGroupRepository;
+    private final PartTypeRepository partTypeRepository;
 
-    public VehicleService(MakeRepository makeRepository, ModelRepository modelRepository, GenerationRepository generationRepository, EngineRepository engineRepository, PartGroupRepository partGroupRepository) {
+    public VehicleService(MakeRepository makeRepository, ModelRepository modelRepository, GenerationRepository generationRepository, EngineRepository engineRepository, PartGroupRepository partGroupRepository, PartTypeRepository partTypeRepository) {
         this.makeRepository = makeRepository;
         this.modelRepository = modelRepository;
         this.generationRepository = generationRepository;
         this.engineRepository = engineRepository;
         this.partGroupRepository = partGroupRepository;
+        this.partTypeRepository = partTypeRepository;
     }
 
 
@@ -51,6 +54,14 @@ public class VehicleService {
     public List<String> getFourCarPartsByGroupId(int groupId){
         System.out.println(groupId);
         return partGroupRepository.getFourPartsByGroupName(groupId);
+    }
+
+    public int getGroupIdByGroupName(String groupName){
+        return partGroupRepository.getGroupIdByGroupName(groupName);
+    }
+
+    public List<CarPartType> getPartsTypeByGroupId(int groupId){
+        return partTypeRepository.getPartsTypeByGroupName(groupId);
     }
 
 }

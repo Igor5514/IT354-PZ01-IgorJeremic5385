@@ -14,4 +14,9 @@ public interface PartGroupRepository extends JpaRepository<CarPartGroup,Long> {
             "LIMIT 4", nativeQuery = true)
     List<String> getFourPartsByGroupName(@Param("groupId") int groupId);
 
+    @Query(value = "SELECT group_id FROM car_part_group " +
+            "WHERE group_name = :groupName", nativeQuery = true)
+    int getGroupIdByGroupName(@Param("groupName") String groupName);
+
+
 }
