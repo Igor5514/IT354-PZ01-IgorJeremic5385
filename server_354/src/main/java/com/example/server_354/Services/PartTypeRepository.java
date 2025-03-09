@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface PartTypeRepository extends JpaRepository<CarPartType, Long> {
 
-    @Query(value = "SELECT part_type_name FROM car_part_type " +
+    @Query(value = "SELECT * FROM car_part_type " +
             "WHERE group_id = :groupId", nativeQuery = true)
     List<CarPartType> getPartsTypeByGroupName(@Param("groupId") int groupId);
 

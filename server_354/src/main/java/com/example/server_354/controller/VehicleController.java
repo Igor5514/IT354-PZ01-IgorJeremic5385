@@ -18,6 +18,10 @@ public class VehicleController {
         this.vehicleService = vehicleService;
     }
 
+    public String substringIncomingString(String text){
+        return text.substring(1, text.length() - 1);
+    }
+
     @GetMapping("/getMake")
     public ResponseEntity<?> getVehicleMake() {
         Map<String, String> errorResponse = new HashMap<>();
@@ -33,7 +37,7 @@ public class VehicleController {
 
     @PostMapping("/getModel")
     public ResponseEntity<?> getVehicleModel(@RequestBody String make){
-        String substrigedMake = make.substring(1, make.length() - 1);
+        String substrigedMake = substringIncomingString(make);
         Integer makeId = vehicleService.getMakeIdByMake(substrigedMake);
         Map<String, String> errorResponse = new HashMap<>();
         try{
@@ -48,7 +52,7 @@ public class VehicleController {
 
     @PostMapping("/getGeneration")
     public ResponseEntity<?> getVehicleGeneration(@RequestBody String model){
-        String substrigedModel = model.substring(1, model.length() - 1);
+        String substrigedModel = substringIncomingString(model);
         Map<String, String> errorResponse = new HashMap<>();
         try{
             List<String> generationList = vehicleService.getGenerationByModelId(substrigedModel);
@@ -99,13 +103,15 @@ public class VehicleController {
     @PostMapping("/getPartsList")
     private ResponseEntity<?> getPartsList(@RequestBody String partGroup){
         Map<String,String> response = new HashMap<>();
+        String partGroupSub = substringIncomingString(partGroup);
         try{
-            int groupId = vehicleService.getGroupIdByGroupName(partGroup);
+
+            int groupId = vehicleService.getGroupIdByGroupName(partGroupSub);
             List<Part> list = new ArrayList<>();
             List<CarPartType> partsList = vehicleService.getPartsTypeByGroupId(groupId);
             for(CarPartType pg : partsList){
                 String base64Image = Base64.getEncoder().encodeToString(pg.getImage());
-                String partTypeName = pg.getPart_type();
+                String partTypeName = pg.getPartTypeName();
                 list.add(new Part(partTypeName,base64Image));
             }
             return ResponseEntity.ok(list);

@@ -11,6 +11,12 @@ export const Shop = () => {
     const [isFirstCardContainerActive, setIsFirstCardContainerActive] = useState(true);
     const [selectedGroup, setSelectedGroup] = useState("");
 
+    function setFirstCardActive(value){
+        setIsFirstCardContainerActive(value)
+    }
+
+    
+
     useEffect(() => {
         async function loadGroupComponents() {
             try {
@@ -30,26 +36,7 @@ export const Shop = () => {
         loadGroupComponents();
     }, []);
 
-    async function loadPartsType(groupName){
-        try{
-            const response = await fetch("http://localhost:8080/vehicle/getPartsList",{
-                method: "POST",
-                headers: {
-                    "Content-Type" : "application/json"
-                },
-                body: JSON.stringify(groupName)
-            })
-            const data = await response.JSON();
-            setPartsList(data)
-            if(response.ok){
-                console.log("parts loaded successfully");
-            }else{
-                console.log("error " + data.message)
-            }
-        }catch (error){
-            console.log(error.message)
-        }
-    }
+    
 
     return (
         <>
@@ -63,26 +50,27 @@ export const Shop = () => {
                 </div>
                 <h1 className="shop-title">Order best quality parts online</h1>
                 <div className="part-carts-grid-container">
-                        {
-                            isFirstCardContainerActive && group.length > 0 ? group.map((item, index) => {
-                                const img = `data:image/png;base64,${item.groupImage}`;
-                                return (
-                                    <FirstCard key={index} title={item.groupName} paragraphs={item.partsList} img={img} />
-                                );
-                            }) : (
-                                <p className='text-white'>No parts available.</p> 
+                    {
+                        isFirstCardContainerActive && group.length > 0 ? group.map((item, index) => {
+                            const img = `data:image/png;base64,${item.groupImage}`;
+                            return (
+                                <FirstCard key={index} title={item.groupName} paragraphs={item.partsList} img={img}
+                                setFirstCardActive={setFirstCardActive} setPartsList={setPartsList}/>
+                            );
+                        }) : (
+                            console.log("group cards inactive")
+                        )
+                    }
+                    {
+                        !isFirstCardContainerActive && partsList.length > 0 ? partsList.map((item, index) => {
+                            const img = `data:image/png;base64,${item.groupImage}`;
+                            return (
+                                <SecondCard key={index} title={item.partName} img={img} />
                             )
-                        }
-                        {
-                           !isFirstCardContainerActive && partsList.length < 0 ? partsList.map((item, index) => {
-                                const img = `data:image/png;base64,${item.groupImage}`;
-                                return (
-                                    <SecondCard title={item.partName} img={img} />
-                                )
-                           }) : (
-                                <p className='text-white'>No parts available.</p> 
-                           )
-                        }
+                        }) : (
+                            console.log(partsList)
+                        )
+                    }
                 </div>
             </div>
         </>

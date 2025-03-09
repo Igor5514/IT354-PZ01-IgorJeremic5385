@@ -15,7 +15,7 @@ const SecondCard = ({title, img}) => {
                     <h2 style={{ fontFamily: "'DM Sans', sans-serif" }}>{title}</h2>
                     <img src= {img} />
                 </div>
-                <button onClick={(e) => {buttonListener(e)}}>Show more</button>
+                <button onClick={(e) => {buttonListener(e)}}>Find parts</button>
             </div>
         </div>  
     );

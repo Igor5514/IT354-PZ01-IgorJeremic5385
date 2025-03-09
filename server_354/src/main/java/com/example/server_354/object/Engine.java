@@ -10,9 +10,9 @@ public class Engine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int engine_id;
-    private int engine;
+    private String engine;
 
-    public Engine(int engine_id, int engine) {
+    public Engine(int engine_id, String engine) {
         this.engine_id = engine_id;
         this.engine = engine;
     }
@@ -28,11 +28,11 @@ public class Engine {
         this.engine_id = engine_id;
     }
 
-    public int getEngine() {
+    public String getEngine() {
         return engine;
     }
 
-    public void setEngine(int engine) {
+    public void setEngine(String engine) {
         this.engine = engine;
     }
 

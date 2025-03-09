@@ -7,19 +7,31 @@ public class CarPartType{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String part_type;
+    @Column(name = "part_type_id")
+    private int partTypeId;
+    private String partTypeName;
+
+    @Lob
     private byte[] image;
 
     @ManyToOne
     @JoinColumn(name = "group_id")
     private CarPartGroup carPartGroup;
 
-    public String getPart_type() {
-        return part_type;
+    public int getPartTypeId() {
+        return partTypeId;
     }
 
-    public void setPart_type(String part_type) {
-        this.part_type = part_type;
+    public void setPartTypeId(int partTypeId) {
+        this.partTypeId = partTypeId;
+    }
+
+    public String getPartTypeName() {
+        return partTypeName;
+    }
+
+    public void setPartTypeName(String partTypeName) {
+        this.partTypeName = partTypeName;
     }
 
     public byte[] getImage() {

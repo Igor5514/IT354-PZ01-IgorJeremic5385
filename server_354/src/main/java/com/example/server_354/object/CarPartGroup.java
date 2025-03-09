@@ -10,6 +10,8 @@ public class CarPartGroup {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int group_id;
     private String group_name;
+
+    @Lob
     private byte[] image;
 
     @OneToMany(mappedBy = "carPartGroup", cascade = CascadeType.ALL)

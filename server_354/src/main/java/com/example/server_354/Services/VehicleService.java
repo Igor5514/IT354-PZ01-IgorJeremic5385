@@ -52,11 +52,11 @@ public class VehicleService {
     }
 
     public List<String> getFourCarPartsByGroupId(int groupId){
-        System.out.println(groupId);
         return partGroupRepository.getFourPartsByGroupName(groupId);
     }
 
     public int getGroupIdByGroupName(String groupName){
+        System.out.println(groupName);
         return partGroupRepository.getGroupIdByGroupName(groupName);
     }
 
